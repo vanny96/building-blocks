@@ -53,22 +53,12 @@ module Enumerable
         end
         count
     end    
-    def my_map *arguments
-        if arguments.size == 1
-            new_array = []
-            self.my_each do |element|
-                new_array << arguments[0].call(element)
-            end
-            return new_array
-        elsif argument.size == 0
-            new_array = []
-            self.my_each do |element|
-                new_array << yield(element)
-            end
-            retunr new_array
-        else
-            puts "Only 0 or 1 arguments accepted"
+    def my_map 
+        new_array = []
+        self.my_each do |element|
+            new_array << yield(element)
         end
+        return new_array
 
     end
     def my_inject *values
@@ -91,6 +81,5 @@ module Enumerable
     
 end
 
-procac = Proc.new {|a| a = a*2}
-
-puts [5,6,7,8,9,10].my_map(procac)
+cacca = Proc.new {|element| element * 2}
+puts [1,2,3,4].my_map(&cacca)
